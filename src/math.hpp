@@ -1,3 +1,8 @@
+#pragma once
+
+#include <pybind11/stl.h>
+#include <pybind11/numpy.h>
+
 /*! Add two integers
     \param i an integer
     \param j another integer
@@ -8,3 +13,7 @@ int add(int i, int j);
     \param j an integer to subtract from \p i
 */
 int subtract(int i, int j);
+
+void cosfft1(py::array_t<double> data, unsigned n, bool inverse = false);
+
+

@@ -5,6 +5,7 @@ project('vossen', ['c', 'cpp'],
 src = [
   'src/bindings.cpp',
   'src/math.cpp',
+  'src/cft.cpp',
 ]
 
 pymod = import('python')
