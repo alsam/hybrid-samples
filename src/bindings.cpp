@@ -3,9 +3,10 @@
 #include "math.hpp"
 
 namespace py = pybind11;
-//PYBIND11_MAKE_OPAQUE(std::vector<double>);
+PYBIND11_MAKE_OPAQUE(std::vector<double>);
 PYBIND11_MODULE(vossen, m)
 {
+    py::bind_vector<std::vector<double>>(m, "VectorDouble", py::buffer_protocol());
     m.def("add", &add);
     m.def("subtract", &subtract);
     m.def("cosfft1", &cosfft1, py::arg("data"), py::arg("n"), py::arg("inverse") = false);

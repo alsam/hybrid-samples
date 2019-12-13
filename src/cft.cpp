@@ -36,9 +36,6 @@ void cosfft1(std::vector<double>& data, unsigned n, bool inverse)
             y1, y2, tempr, tempi, h1r, h1i, h2r, h2i,
             temp, sum, first, last;
 
-    for (unsigned i=0; i<=n; i++) {
-        std::cout << "BEG: data[" << i << "] : " << data[i] << std::endl;
-    }
     temp = data[n];
     if (inverse) {
         first=0.5*data[0];
@@ -138,8 +135,5 @@ void cosfft1(std::vector<double>& data, unsigned n, bool inverse)
         data[n] = (data[n]-(first+last))*2.0/n;
         data[0] *= 0.5;
         data[n] *= 0.5;
-    }
-    for (unsigned i=0; i<=n; i++) {
-        std::cout << "END: data[" << i << "] : " << data[i] << std::endl;
     }
 }
