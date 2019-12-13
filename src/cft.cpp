@@ -27,7 +27,7 @@
 #include <algorithm>
 #include "math.hpp"
 
-void cosfft1(py::array_t<double> data, unsigned n, bool inverse)
+void cosfft1(std::vector<double> data, unsigned n, bool inverse)
 {
     unsigned  m;
     unsigned     mmax, istep, i1, i2, i3, i4;

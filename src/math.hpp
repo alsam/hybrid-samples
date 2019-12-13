@@ -3,6 +3,8 @@
 #include <pybind11/stl.h>
 #include <pybind11/numpy.h>
 
+namespace py = pybind11;
+
 /*! Add two integers
     \param i an integer
     \param j another integer
@@ -14,6 +16,6 @@ int add(int i, int j);
 */
 int subtract(int i, int j);
 
-void cosfft1(py::array_t<double> data, unsigned n, bool inverse = false);
+void cosfft1(std::vector<double> data, unsigned n, bool inverse = false);
 
 
