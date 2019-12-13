@@ -12,5 +12,5 @@ pymod = import('python')
 py = pymod.find_installation('python3')
 py.extension_module('vossen',
                     sources: src,
-                    include_directories: ['lib/pybind11/include',],
+                    include_directories: ['lib/pybind11/include','/usr/include/eigen3'],
                     dependencies: dependency('python3'))
