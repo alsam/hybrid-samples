@@ -16,6 +16,6 @@ int add(int i, int j);
 */
 int subtract(int i, int j);
 
-void cosfft1(std::vector<double> data, unsigned n, bool inverse = false);
+void cosfft1(std::vector<double>& data, unsigned n, bool inverse = false);
 
 

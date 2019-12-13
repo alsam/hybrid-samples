@@ -25,16 +25,20 @@
 
 #include <cmath>
 #include <algorithm>
+#include <iostream>
 #include "math.hpp"
 
-void cosfft1(std::vector<double> data, unsigned n, bool inverse)
+void cosfft1(std::vector<double>& data, unsigned n, bool inverse)
 {
     unsigned  m;
-    unsigned     mmax, istep, i1, i2, i3, i4;
+    unsigned  mmax, istep, i1, i2, i3, i4;
     double  wr, wi, wpr, wpi, wtemp, theta,
             y1, y2, tempr, tempi, h1r, h1i, h2r, h2i,
             temp, sum, first, last;
 
+    for (unsigned i=0; i<=n; i++) {
+        std::cout << "BEG: data[" << i << "] : " << data[i] << std::endl;
+    }
     temp = data[n];
     if (inverse) {
         first=0.5*data[0];
@@ -127,11 +131,15 @@ void cosfft1(std::vector<double> data, unsigned n, bool inverse)
     }
 
     if (inverse) {
-        for (unsigned j=0;j<=n;j+=2) {
+        for (unsigned j=0;j<n;j+=2) {
             data[j    ] = (data[j    ]-(first+last))*2.0/n;
             data[j + 1] = (data[j + 1]-(first-last))*2.0/n;
         }
+        data[n] = (data[n]-(first+last))*2.0/n;
         data[0] *= 0.5;
         data[n] *= 0.5;
+    }
+    for (unsigned i=0; i<=n; i++) {
+        std::cout << "END: data[" << i << "] : " << data[i] << std::endl;
     }
 }
