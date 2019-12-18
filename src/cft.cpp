@@ -28,7 +28,7 @@
 #include <iostream>
 #include "math.hpp"
 
-void cosfft1(std::vector<double>& data, unsigned n, bool inverse)
+void cosfft1(Eigen::Ref<Eigen::RowVectorXd> data, unsigned n, bool inverse)
 {
     unsigned  m;
     unsigned  mmax, istep, i1, i2, i3, i4;
@@ -135,5 +135,14 @@ void cosfft1(std::vector<double>& data, unsigned n, bool inverse)
         data[n] = (data[n]-(first+last))*2.0/n;
         data[0] *= 0.5;
         data[n] *= 0.5;
+    }
+}
+
+void cft2(Eigen::Ref<RowMatrixXd> data /* used to be double **data */, unsigned nn, bool inverse)
+{
+    for (int idim=0; idim<2; ++idim) {
+        for (unsigned i=0; i<=nn; ++i)
+            cosfft1(data.row(i), nn, inverse);
+        data.transpose();
     }
 }

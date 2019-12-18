@@ -13,12 +13,16 @@ class MainTest(unittest.TestCase):
         self.assertEqual(vossen.subtract(1, 1), 0)
 
     def test_cosfft1(self):
-        v = vossen.VectorDouble([1,2,3])
-        v1 = vossen.VectorDouble([6,-2,2])
+        # v = vossen.VectorDouble([1,2,3])
+        # v1 = vossen.VectorDouble([6,-2,2])
+        v = np.array([1.,2,3])
+        v1 = np.array([6.,-2,2])
         vossen.cosfft1(v, 2)
-        self.assertAlmostEqual(v, v1)
+        # self.assertAlmostEqual(v, v1)
+        self.assertTrue(np.allclose(v, v1))
         vossen.cosfft1(v, 2, inverse = True)
-        self.assertAlmostEqual(v, vossen.VectorDouble([1,2,3]))
+        # self.assertAlmostEqual(v, vossen.VectorDouble([1.,2,3]))
+        self.assertTrue(np.allclose(v, np.array([1.,2,3])))
 
     def test_scale_by_2(self):
         x = np.array([1.,2.,3.,])
